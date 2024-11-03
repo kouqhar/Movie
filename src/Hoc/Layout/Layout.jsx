@@ -13,8 +13,8 @@ const Layout = () => {
   }, [location]);
 
   return (
-    <div ref={toTopRef}>
-      <main className={styles.container}>
+    <div>
+      <main ref={toTopRef} className={styles.container}>
         <Outlet />
       </main>
     </div>
