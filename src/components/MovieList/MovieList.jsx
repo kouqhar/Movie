@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MovieContext } from "../../context/MovieContext";
 import SearchBar from "../SearchBar";
 import AddMovieForm from "../AddMovieForm";
@@ -11,12 +11,10 @@ const MovieList = () => {
   const { movies, loading, error, query, pagination, setPagination } =
     useContext(MovieContext);
   const [showAddMovie, setShowAddMovie] = useState(false);
-  const toTopRef = useRef(null);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     setPagination(page);
-    toTopRef.current.scrollIntoView({ behavior: "smooth" });
   }, [setPagination, page]);
 
   if (loading) return <div>Loading...</div>;
@@ -51,7 +49,7 @@ const MovieList = () => {
           <AddMovieForm onClose={() => setShowAddMovie(false)} />
         )}
         {!loading && (
-          <ul className={styles.container_movies} ref={toTopRef}>
+          <ul className={styles.container_movies}>
             {filteredMovies?.map(({ id, title, poster_path, vote_average }) => {
               const props = { title, id, poster_path, vote_average };
 

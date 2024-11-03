@@ -21,7 +21,7 @@
 
 .container {
     @include heightWidth(auto, 90%);
-    @include paddingMargin(2rem 0, auto);
+    @include paddingMargin(2rem 0, 5vh auto);
     min-height: 70vh;
     overflow-y: auto;
     position: relative;
