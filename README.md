@@ -56,7 +56,7 @@ A ReactJS application that allows users to search, add, and view movie details. 
    npm start
    ```
 
-4. Open your browser and navigate to `http://localhost:3000`.
+4. Open your browser and navigate to `http://localhost:3000` or `http://localhost:5173/`.
 
 ## Usage
 
