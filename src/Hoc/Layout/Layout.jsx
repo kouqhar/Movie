@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
 //  styles
-import styles from "./styles/styles.modules.css";
+import styles from "./styles/styles.module.css";
 
 const Layout = () => {
   const toTopRef = useRef(null);
