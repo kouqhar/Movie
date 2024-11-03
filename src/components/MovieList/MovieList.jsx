@@ -1,18 +1,23 @@
-import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState, useRef } from "react";
 import { MovieContext } from "../../context/MovieContext";
 import SearchBar from "../SearchBar";
 import AddMovieForm from "../AddMovieForm";
 
-const { VITE_APP_API_BASE_IMAGE_URL } = import.meta.env;
+// Styles
+import styles from "./styles/styles.module.css";
+import MovieCard from "./MovieCard";
 
 const MovieList = () => {
   const { movies, loading, error, query, pagination, setPagination } =
     useContext(MovieContext);
   const [showAddMovie, setShowAddMovie] = useState(false);
+  const toTopRef = useRef(null);
   const [page, setPage] = useState(1);
 
-  useEffect(() => setPagination(page), [setPagination, page]);
+  useEffect(() => {
+    setPagination(page);
+    toTopRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [setPagination, page]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -36,31 +41,32 @@ const MovieList = () => {
   };
 
   return (
-    <div>
-      <SearchBar />
-      <button onClick={() => setShowAddMovie(true)}>Add New</button>
-      {showAddMovie && <AddMovieForm onClose={() => setShowAddMovie(false)} />}
-      {!loading && (
-        <ul>
-          {filteredMovies?.map(({ id, title, poster_path, vote_average }) => (
-            <li key={id}>
-              <Link to={`/movie/${id}`}>
-                <h1>{title}</h1>
-                <img
-                  src={`${VITE_APP_API_BASE_IMAGE_URL}${poster_path}`}
-                  alt={title}
-                />
-                <p>Rating: {vote_average}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+    <>
+      <header className={styles.header}>
+        <SearchBar />
+        <button onClick={() => setShowAddMovie(true)}>Add New</button>
+      </header>
+      <div className={styles.container}>
+        {showAddMovie && (
+          <AddMovieForm onClose={() => setShowAddMovie(false)} />
+        )}
+        {!loading && (
+          <ul className={styles.container_movies} ref={toTopRef}>
+            {filteredMovies?.map(({ id, title, poster_path, vote_average }) => {
+              const props = { title, id, poster_path, vote_average };
 
-      <button onClick={previousPage}>prev</button>
-      <span> {`${pagination} / ${movies?.total_pages}`} </span>
-      <button onClick={nextPage}>next</button>
-    </div>
+              return <MovieCard key={id} {...props} />;
+            })}
+          </ul>
+        )}
+
+        <div className={styles.container_paginationCta}>
+          <button onClick={previousPage}>prev</button>
+          <span> {`${pagination} / ${movies?.total_pages}`} </span>
+          <button onClick={nextPage}>next</button>
+        </div>
+      </div>
+    </>
   );
 };
 

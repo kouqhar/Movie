@@ -1,0 +1,127 @@
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  -ms-justify-content: space-evenly;
+  -ms-align-items: center;
+  position: fixed;
+  width: 100%;
+  padding: 1rem;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  z-index: 9999;
+}
+.header button {
+  padding: 0.5rem;
+  margin: 0;
+  background-color: #944317;
+}
+
+.container {
+  height: auto;
+  width: 90%;
+  padding: 2rem 0;
+  margin: auto;
+  min-height: 70vh;
+  overflow-y: auto;
+  position: relative;
+}
+.container__text {
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+.container_movies {
+  height: auto;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: auto;
+  row-gap: 1rem;
+  -moz-column-gap: 0.3rem;
+       column-gap: 0.3rem;
+}
+.container_movies a {
+  height: 100%;
+  width: 100%;
+}
+.container_paginationCta {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  -ms-justify-content: space-evenly;
+  -ms-align-items: center;
+  position: fixed;
+  width: 100%;
+  padding: 1rem;
+  bottom: 0;
+  left: 0;
+  background-color: #191c1d;
+}
+.container_paginationCta span {
+  font-weight: bolder;
+}
+.container_paginationCta button {
+  background-color: #97281B;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+}
+
+.Card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -ms-justify-content: center;
+  -ms-align-items: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  min-height: 20rem;
+  background: #eee;
+  text-align: center;
+  position: relative;
+  box-shadow: 2px 2px 2px 3px #eee;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease-in-out;
+}
+.Card__poster {
+  height: auto;
+  width: 100%;
+  min-height: 90%;
+}
+.Card__poster___image {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.Card__rating {
+  height: 2rem;
+  width: 2rem;
+  display: grid;
+  place-items: center;
+  border: 2px solid #000000;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 1%;
+  left: 5%;
+}
+.Card__details {
+  height: auto;
+  width: 100%;
+  background: #ffffff;
+  font-weight: bold;
+  min-height: 10%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.Card:hover {
+  transform: translate(3%, -3%);
+}/*# sourceMappingURL=styles.module.css.map */

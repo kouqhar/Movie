@@ -1,6 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
+//  styles
+import styles from "./styles/styles.modules.css";
+
 const Layout = () => {
   const toTopRef = useRef(null);
   const location = useLocation();
@@ -11,7 +14,7 @@ const Layout = () => {
 
   return (
     <div ref={toTopRef}>
-      <main>
+      <main className={styles.container}>
         <Outlet />
       </main>
     </div>

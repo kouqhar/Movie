@@ -1,0 +1,125 @@
+@import "../../../styles/partials/mixin";
+@import "../../../styles/partials/mediaQueries";
+@import "../../../styles/partials/colors";
+
+.header {
+    @include displayFlex($jc: space-evenly);
+    position: fixed;
+    width: 100%;
+    padding: 1rem;
+    top: 0;
+    left: 0;
+    background-color: $primaryBlack;
+    z-index: 9999;
+
+    button {
+        @include paddingMargin($padding: .5rem);
+        background-color: $primaryDanger;
+    }
+}
+
+
+.container {
+    @include heightWidth(auto, 90%);
+    @include paddingMargin(2rem 0, auto);
+    min-height: 70vh;
+    overflow-y: auto;
+    position: relative;
+
+    &__text {
+        font-size: 1.5rem;
+        line-height: 3rem
+    }
+
+    &_movies {
+        @include heightWidth(auto, auto);
+        @include paddingMargin(0, 0);
+        @include centeredGrid();
+        @include displayGrid(auto, repeat(auto-fit, minmax(200px, 1fr)));
+        row-gap: 1rem;
+        column-gap: .3rem;
+
+        @include responsive(medium-screens) {
+            @include displayGrid(auto, repeat(auto-fit, minmax(1fr, 1fr)));
+        }
+
+        a {
+            @include heightWidth();
+        }
+    }
+
+    &_paginationCta {
+        @include displayFlex($jc: space-evenly);
+        position: fixed;
+        width: 100%;
+        padding: 1rem;
+        bottom: 0;
+        left: 0;
+        background-color: $secondaryBlur;
+
+        span {
+            font-weight: bolder;
+        }
+
+        button {
+            background-color: $card-button;
+            border: none;
+            padding: .5rem 1.5rem;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+.Card {
+    @include displayFlex();
+    @include heightWidth();
+    flex-direction: column;
+    min-height: 20rem;
+    // width: 200px;
+    background: $primaryGrey;
+    text-align: center;
+    position: relative;
+    box-shadow: 2px 2px 2px 3px $primaryGrey;
+    cursor: pointer;
+    border-radius: .5rem;
+    transition: transform .3s ease-in-out;
+
+    @include responsive(medium-screens) {
+        width: 100%;
+    }
+
+    &__poster {
+        @include heightWidth(auto, 100%);
+        min-height: 90%;
+
+        &___image {
+            @include heightWidth();
+            border-radius: .5rem;
+        }
+    }
+
+    &__rating {
+        @include heightWidth(2rem, 2rem);
+        @include centeredGrid();
+        border: 2px solid $primaryBlack;
+        background: $primaryWhite;
+        border-radius: 50%;
+        position: absolute;
+        top: 1%;
+        left: 5%;
+    }
+
+    &__details {
+        @include heightWidth(auto, 100%);
+        background: $primaryWhite;
+        font-weight: bold;
+        min-height: 10%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    &:hover {
+        transform: translate(3%, -3%);
+    }
+}
