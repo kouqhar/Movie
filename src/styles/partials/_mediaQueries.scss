@@ -1,0 +1,38 @@
+$mobile-breakpoint: 768px;
+$tablet-breakpoint: 769px;
+$desktop-breakpoint: 1024px;
+$widescreen-breakpoint: 1216px;
+$fullhd-breakpoint: 1408px;
+
+
+@mixin responsive($width) {
+    @if $width==mobile-screens {
+        @media screen and (max-width: $mobile-breakpoint) {
+            @content;
+        }
+    }
+
+    @else if $width==tablet-screens {
+        @media (min-width: $tablet-breakpoint) {
+            @content;
+        }
+    }
+
+    @else if $width==desktop-screens {
+        @media (min-width: $desktop-breakpoint) {
+            @content;
+        }
+    }
+
+    @else if $width==widescreen-screens {
+        @media (min-width: $widescreen-breakpoint) {
+            @content;
+        }
+    }
+
+    @else if $width==fullhd-medium {
+        @media screen and (min-width: $fullhd-breakpoint) {
+            @content;
+        }
+    }
+}

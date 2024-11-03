@@ -1,0 +1,11 @@
+@import "../partials/mixin";
+@import "../partials/colors";
+
+#root {
+    @include heightWidth();
+}
+
+.Container {
+    @include heightWidth();
+    // overflow: hidden;
+}
