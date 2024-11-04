@@ -106,6 +106,7 @@
   -ms-align-items: center;
 }
 .container_pagination__cta span {
+  color: #ffffff;
   font-weight: bolder;
 }
 .container_pagination__cta button {

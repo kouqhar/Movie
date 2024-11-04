@@ -22,9 +22,11 @@ const SearchBar = () => {
         onChange={handleSearch}
         placeholder="Search movies..."
       />
-      <div onClick={() => setQuery("")} className={styles.clear}>
-        X
-      </div>
+      {query.length > 0 && (
+        <div onClick={() => setQuery("")} className={styles.clear}>
+          X
+        </div>
+      )}
     </>
   );
 };
