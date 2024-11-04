@@ -11,12 +11,14 @@ const MovieProvider = ({ children }) => {
   const [searchHistory, setSearchHistory] = useState([]);
   const [query, setQuery] = useState("");
   const [pagination, setPagination] = useState();
+  const [totalPageCounter, setTotalPageCounter] = useState();
 
   useEffect(() => {
-    const fetchMovies = async (q) => {
+    const fetchMovies = async (p) => {
       try {
-        const response = await getMovies(q);
-        setMovies(response.data);
+        const response = await getMovies(p);
+        setMovies(response.data?.results);
+        setTotalPageCounter(response.data?.total_pages);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -27,12 +29,13 @@ const MovieProvider = ({ children }) => {
       page: pagination,
     };
     fetchMovies(option);
-  }, [query, pagination]);
+  }, [pagination]);
 
   return (
     <MovieContext.Provider
       value={{
         movies,
+        setMovies,
         loading,
         error,
         searchHistory,
@@ -41,6 +44,7 @@ const MovieProvider = ({ children }) => {
         setQuery,
         pagination,
         setPagination,
+        totalPageCounter,
       }}
     >
       {children}

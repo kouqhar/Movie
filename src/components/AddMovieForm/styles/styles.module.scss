@@ -46,8 +46,13 @@
 
             &____cta {
                 @extend %formGroup;
-                @include displayFlex($jc: space-evenly);
+                @include displayFlex($jc: space-between);
+                width: 100%;
                 margin-block-start: 1.5rem;
+
+                @include responsive(desktop-screens) {
+                    @include displayFlex($jc: space-evenly);
+                }
 
                 button {
                     background-color: $primaryAsh;

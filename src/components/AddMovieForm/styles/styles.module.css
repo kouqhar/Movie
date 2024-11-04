@@ -57,11 +57,21 @@
 }
 .form_container__content___group____cta {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  -ms-justify-content: space-evenly;
+  -ms-justify-content: space-between;
   -ms-align-items: center;
+  width: 100%;
   margin-block-start: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .form_container__content___group____cta {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    -ms-justify-content: space-evenly;
+    -ms-align-items: center;
+  }
 }
 .form_container__content___group____cta button {
   background-color: #484E51;

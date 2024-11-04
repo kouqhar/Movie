@@ -8,34 +8,48 @@ import styles from "./styles/styles.module.css";
 import MovieCard from "./MovieCard";
 
 const MovieList = () => {
-  const { movies, loading, error, query, pagination, setPagination } =
-    useContext(MovieContext);
+  const {
+    movies,
+    totalPageCounter,
+    loading,
+    error,
+    query,
+    pagination,
+    setPagination,
+  } = useContext(MovieContext);
   const [showAddMovie, setShowAddMovie] = useState(false);
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [page, setPage] = useState(1);
+
+  console.log("movies ", movies);
 
   useEffect(() => {
     setPagination(page);
   }, [setPagination, page]);
 
+  useEffect(() => {
+    const filteredMovies = movies?.filter((movie) =>
+      movie.title.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setFilteredMovies(filteredMovies);
+
+    return () => filteredMovies;
+  }, [query, movies]);
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-
-  const filteredMovies = movies?.results.filter((movie) =>
-    movie.title.toLowerCase().includes(query.toLowerCase())
-  );
-
-  // console.log("movies ", movies);
 
   const previousPage = () => {
     if (page - 1 < 1) return;
 
-    setPage((prevstate) => (prevstate -= 1));
+    setPage((prevState) => (prevState -= 1));
   };
 
   const nextPage = () => {
     if (page + 1 > movies?.total_pages) return;
 
-    setPage((prevstate) => (prevstate += 1));
+    setPage((prevState) => (prevState += 1));
   };
 
   return (
@@ -66,7 +80,7 @@ const MovieList = () => {
             <span>
               {" "}
               {`${pagination} / ${
-                movies?.total_pages ? movies?.total_pages : "No content"
+                totalPageCounter ? totalPageCounter : "No content"
               }`}{" "}
             </span>
             <button onClick={nextPage}>next</button>
