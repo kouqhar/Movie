@@ -1,9 +1,9 @@
-.header {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  -ms-justify-content: space-evenly;
-  -ms-align-items: center;
+.container_pagination__cta, .header_container__content {
+  max-width: 1500px;
+  margin-inline: auto;
+}
+
+.header_container {
   position: fixed;
   width: 100%;
   padding: 1rem;
@@ -12,10 +12,17 @@
   background-color: #000000;
   z-index: 9999;
 }
-.header button {
+.header_container__content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  -ms-justify-content: space-evenly;
+  -ms-align-items: center;
+}
+.header_container__content button {
   padding: 0.5rem;
   margin: 0;
-  background-color: #944317;
+  background-color: #7b602f;
 }
 
 .container {
@@ -41,20 +48,15 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-template-rows: auto;
-  row-gap: 1rem;
-  -moz-column-gap: 0.3rem;
-       column-gap: 0.3rem;
+  row-gap: 2rem;
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
 }
 .container_movies a {
   height: 100%;
   width: 100%;
 }
-.container_paginationCta {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  -ms-justify-content: space-evenly;
-  -ms-align-items: center;
+.container_pagination {
   position: fixed;
   width: 100%;
   padding: 1rem;
@@ -62,11 +64,18 @@
   left: 0;
   background-color: #191c1d;
 }
-.container_paginationCta span {
+.container_pagination__cta {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  -ms-justify-content: space-evenly;
+  -ms-align-items: center;
+}
+.container_pagination__cta span {
   font-weight: bolder;
 }
-.container_paginationCta button {
-  background-color: #97281B;
+.container_pagination__cta button {
+  background-color: #7b602f;
   border: none;
   padding: 0.5rem 1.5rem;
   font-size: 1.1rem;
@@ -78,7 +87,7 @@
   align-items: center;
   -ms-justify-content: center;
   -ms-align-items: center;
-  height: 100%;
+  height: auto;
   width: 100%;
   flex-direction: column;
   min-height: 20rem;
@@ -115,7 +124,8 @@
 .Card__details {
   height: auto;
   width: 100%;
-  background: #ffffff;
+  background-color: #252729;
+  color: #ffffff;
   font-weight: bold;
   min-height: 10%;
   position: absolute;
@@ -123,5 +133,5 @@
   right: 0;
 }
 .Card:hover {
-  transform: translate(3%, -3%);
+  transform: translate(1%, -1%);
 }/*# sourceMappingURL=styles.module.css.map */

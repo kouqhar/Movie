@@ -40,10 +40,12 @@ const MovieList = () => {
 
   return (
     <>
-      <header className={styles.header}>
-        <SearchBar />
-        <button onClick={() => setShowAddMovie(true)}>Add New</button>
-      </header>
+      <div className={styles.header_container}>
+        <header className={styles.header_container__content}>
+          <SearchBar />
+          <button onClick={() => setShowAddMovie(true)}>Add New</button>
+        </header>
+      </div>
       <div className={styles.container}>
         {showAddMovie && (
           <AddMovieForm onClose={() => setShowAddMovie(false)} />
@@ -58,10 +60,17 @@ const MovieList = () => {
           </ul>
         )}
 
-        <div className={styles.container_paginationCta}>
-          <button onClick={previousPage}>prev</button>
-          <span> {`${pagination} / ${movies?.total_pages}`} </span>
-          <button onClick={nextPage}>next</button>
+        <div className={styles.container_pagination}>
+          <div className={styles.container_pagination__cta}>
+            <button onClick={previousPage}>prev</button>
+            <span>
+              {" "}
+              {`${pagination} / ${
+                movies?.total_pages ? movies?.total_pages : "No content"
+              }`}{" "}
+            </span>
+            <button onClick={nextPage}>next</button>
+          </div>
         </div>
       </div>
     </>

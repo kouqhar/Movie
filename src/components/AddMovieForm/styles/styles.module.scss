@@ -1,0 +1,68 @@
+@import "../../../styles/partials/mixin";
+@import "../../../styles/partials/mediaQueries";
+@import "../../../styles/partials/colors";
+
+%formGroup {
+    width: 90%;
+    margin-inline: auto;
+
+    @include responsive(desktop-screens) {
+        width: 80%;
+    }
+}
+
+.form_container {
+    @include heightWidth(100vh, 100%);
+    @include displayFlex();
+    background-color: $primaryBlur;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+
+    &__content {
+        @include displayFlex();
+        @include heightWidth(90%, 90%);
+        background-color: $primaryWhite;
+        border-radius: 1rem;
+
+        @include responsive(desktop-screens) {
+            @include heightWidth(70%, 70%);
+        }
+
+        &___group {
+            @include displayFlex();
+            flex-direction: column;
+            @extend %formGroup;
+
+            input {
+                width: 100%;
+                border-radius: .5rem;
+                padding: .5rem 1rem;
+                font-size: 1.1rem;
+                background-color: $primaryBlur;
+                color: $primaryWhite;
+            }
+
+            &____cta {
+                @extend %formGroup;
+                @include displayFlex($jc: space-evenly);
+                margin-block-start: 1.5rem;
+
+                button {
+                    background-color: $primaryAsh;
+                    border: 2px solid $primaryBlur;
+                    padding: .5rem 1.5rem;
+                    font-size: 1.1rem;
+
+                    &:last-child {
+                        background-color: $primaryTrans;
+                        border: 2px solid $primaryRed;
+                        color: $primaryBlack;
+                    }
+                }
+
+            }
+        }
+    }
+}

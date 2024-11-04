@@ -45,6 +45,7 @@ body {
 
 input {
   border: none;
+  border: 2px solid rgba(255, 255, 255, 0.87);
   font-weight: bold;
   /* font-size: 1.1rem; */
   padding: .5rem 1rem;
@@ -52,17 +53,20 @@ input {
 
 button {
   border-radius: 8px;
-  border: none;
+  color: white;
+  font-weight: bold;
+  border: 2px solid white;
   cursor: pointer;
+  transition: transform 200ms ease-in-out;
 }
 
 button:hover {
-  border-color: #646cff;
+  transform: scale(1.1);
 }
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 1px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {

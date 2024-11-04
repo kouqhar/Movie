@@ -2,8 +2,12 @@
 @import "../../../styles/partials/mediaQueries";
 @import "../../../styles/partials/colors";
 
-.header {
-    @include displayFlex($jc: space-evenly);
+%container {
+    max-width: 1500px;
+    margin-inline: auto;
+}
+
+.header_container {
     position: fixed;
     width: 100%;
     padding: 1rem;
@@ -12,9 +16,14 @@
     background-color: $primaryBlack;
     z-index: 9999;
 
-    button {
-        @include paddingMargin($padding: .5rem);
-        background-color: $primaryDanger;
+    &__content {
+        @extend %container;
+        @include displayFlex($jc: space-evenly);
+
+        button {
+            @include paddingMargin($padding: .5rem);
+            background-color: $primaryOrange;
+        }
     }
 }
 
@@ -36,8 +45,8 @@
         @include paddingMargin(0, 0);
         @include centeredGrid();
         @include displayGrid(auto, repeat(auto-fit, minmax(200px, 1fr)));
-        row-gap: 1rem;
-        column-gap: .3rem;
+        row-gap: 2rem;
+        column-gap: .5rem;
 
         @include responsive(medium-screens) {
             @include displayGrid(auto, repeat(auto-fit, minmax(1fr, 1fr)));
@@ -48,8 +57,7 @@
         }
     }
 
-    &_paginationCta {
-        @include displayFlex($jc: space-evenly);
+    &_pagination {
         position: fixed;
         width: 100%;
         padding: 1rem;
@@ -57,22 +65,29 @@
         left: 0;
         background-color: $secondaryBlur;
 
-        span {
-            font-weight: bolder;
+        &__cta {
+            @include displayFlex($jc: space-evenly);
+            @extend %container;
+
+            span {
+                font-weight: bolder;
+            }
+
+            button {
+                background-color: $primaryOrange;
+                border: none;
+                padding: .5rem 1.5rem;
+                font-size: 1.1rem;
+            }
         }
 
-        button {
-            background-color: $card-button;
-            border: none;
-            padding: .5rem 1.5rem;
-            font-size: 1.1rem;
-        }
     }
+
 }
 
 .Card {
     @include displayFlex();
-    @include heightWidth();
+    @include heightWidth($height: auto);
     flex-direction: column;
     min-height: 20rem;
     // width: 200px;
@@ -111,7 +126,8 @@
 
     &__details {
         @include heightWidth(auto, 100%);
-        background: $primaryWhite;
+        background-color: $primaryBlur;
+        color: $primaryWhite;
         font-weight: bold;
         min-height: 10%;
         position: absolute;
@@ -120,6 +136,6 @@
     }
 
     &:hover {
-        transform: translate(3%, -3%);
+        transform: translate(1%, -1%);
     }
 }
