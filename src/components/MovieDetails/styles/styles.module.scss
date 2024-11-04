@@ -33,11 +33,24 @@
 
             &___overview {
                 font-size: 1.1rem;
+
+                span {
+                    display: block;
+                    color: $primaryRed;
+                    font-size: .9rem;
+
+                }
             }
 
             &___details {
+                @include displayFlex($ai: flex-start);
+                flex-direction: column;
                 width: 100%;
-                @include displayFlex($jc: space-between);
+
+                @include responsive(desktop-screens) {
+                    @include displayFlex($jc: space-between);
+                    flex-direction: row;
+                }
 
                 img {
                     object-fit: cover;

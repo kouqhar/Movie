@@ -20,10 +20,10 @@ const genres = [
   ],
 ];
 const overview = [loremOne, loremTwo];
-const release_date = [Date.now(), new Date(2023 - 4 - 20)];
+const release_date = ["2023-04-25", "2024-09-15"];
 const vote_average = [5.8, 8.4];
 const status = ["Released", "Un-Released"];
-const vote_count = [64459, 32472];
+const vote_count = [659, 372];
 const poster_path = [
   "/b33nnKl1GSFbao4l3fZDDqsMx0F.jpg",
   "/7fR3KxswtY8OHHZuOUB9td58CRX.jpg",
@@ -41,7 +41,7 @@ const AddMovieForm = ({ onClose }) => {
       .trim()
       .split(" ")
       .map((word) => {
-        const remainingWord = word.slice(1);
+        const remainingWord = word.slice(1).toLowerCase();
         const newWord = word[0].toUpperCase() + remainingWord;
 
         return newWord;
@@ -59,7 +59,20 @@ const AddMovieForm = ({ onClose }) => {
       genres: genres[randomNumber],
       poster_path: poster_path[randomNumber],
       vote_count: vote_count[randomNumber],
+      isAdded: true,
     };
+
+    const localData = localStorage.getItem("movie");
+    const stringifyData = JSON.stringify([newMovie]);
+
+    if (!localData) {
+      localStorage.setItem("movie", stringifyData);
+    } else {
+      const parsedData = JSON.parse(localData);
+      const newData = [...parsedData, newMovie];
+      const stringifiedData = JSON.stringify(newData);
+      localStorage.setItem("movie", stringifiedData);
+    }
 
     setMovies((prev) => [newMovie, ...prev]);
     setTitle("");
