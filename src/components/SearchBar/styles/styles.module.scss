@@ -1,3 +1,16 @@
 @import "../../../styles/partials/mixin";
 @import "../../../styles/partials/mediaQueries";
 @import "../../../styles/partials/colors";
+
+.clear {
+    height: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $primaryTrans;
+    color: $primaryRed;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    padding: .2rem .7rem;
+    cursor: pointer;
+}

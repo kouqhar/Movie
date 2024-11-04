@@ -14,6 +14,7 @@ const MovieList = () => {
     loading,
     error,
     query,
+    setQuery,
     pagination,
     setPagination,
   } = useContext(MovieContext);
@@ -60,7 +61,9 @@ const MovieList = () => {
                 className={styles.header_container__content___search____suggest}
               >
                 {filteredMovies?.map(({ id, title }, idx) => (
-                  <p key={`${id}-${idx}`}>{title}</p>
+                  <p onClick={() => setQuery(title)} key={`${id}-${idx}`}>
+                    {title}
+                  </p>
                 ))}
               </div>
             )}
