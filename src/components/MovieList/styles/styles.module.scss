@@ -3,13 +3,13 @@
 @import "../../../styles/partials/colors";
 
 %container {
-    max-width: 1500px;
+    max-width: 950px;
     margin-inline: auto;
 }
 
 .header_container {
+    @include heightWidth($height: 10vh);
     position: fixed;
-    width: 100%;
     padding: 1rem;
     top: 0;
     left: 0;
@@ -18,11 +18,41 @@
 
     &__content {
         @extend %container;
-        @include displayFlex($jc: space-evenly);
+        @include heightWidth();
+        @include displayFlex($jc: space-between);
+        position: relative;
+
+        &___search {
+            @include displayFlex();
+            flex-direction: column;
+            width: 60%;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            input {
+                width: 100%;
+            }
+
+            &____suggest {
+                @include heightWidth();
+                max-height: 60vh;
+                border-radius: 0 0 1rem 1rem;
+                overflow-y: auto;
+                background-color: $primaryBlack;
+                color: $primaryWhite;
+                padding-inline: 1rem;
+
+                p {
+                    cursor: pointer;
+                }
+            }
+        }
 
         button {
-            @include paddingMargin($padding: .5rem);
+            @include paddingMargin(.5rem, 0 0 0 auto);
             background-color: $primaryOrange;
+            width: fit-content;
         }
     }
 }
@@ -66,7 +96,7 @@
         background-color: $secondaryBlur;
 
         &__cta {
-            @include displayFlex($jc: space-evenly);
+            @include displayFlex($jc: space-between);
             @extend %container;
 
             span {

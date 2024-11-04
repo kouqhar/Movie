@@ -35,7 +35,6 @@ const MovieList = () => {
     return () => filteredMovies;
   }, [query, movies]);
 
-  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   const previousPage = () => {
@@ -54,7 +53,18 @@ const MovieList = () => {
     <>
       <div className={styles.header_container}>
         <header className={styles.header_container__content}>
-          <SearchBar />
+          <div className={styles.header_container__content___search}>
+            <SearchBar />
+            {query.length > 0 && (
+              <div
+                className={styles.header_container__content___search____suggest}
+              >
+                {filteredMovies?.map(({ id, title }, idx) => (
+                  <p key={`${id}-${idx}`}>{title}</p>
+                ))}
+              </div>
+            )}
+          </div>
           <button onClick={() => setShowAddMovie(true)}>Add New</button>
         </header>
       </div>
@@ -62,7 +72,8 @@ const MovieList = () => {
         {showAddMovie && (
           <AddMovieForm onClose={() => setShowAddMovie(false)} />
         )}
-        {!loading && (
+        {loading && <div className="loading">Loading Movie List...</div>}
+        {!loading && filteredMovies.length > 0 && (
           <ul className={styles.container_movies}>
             {filteredMovies?.map(({ id, title, poster_path, vote_average }) => {
               const props = { title, id, poster_path, vote_average };
@@ -72,12 +83,21 @@ const MovieList = () => {
           </ul>
         )}
 
+        {!loading && filteredMovies.length < 1 && (
+          <div className="loading">
+            <h2>
+              No content {query.length > 0 && `with this name ${query}`}{" "}
+              found!!!{" "}
+            </h2>
+          </div>
+        )}
+
         <div className={styles.container_pagination}>
           <div className={styles.container_pagination__cta}>
             <button onClick={previousPage}>prev</button>
             <span>
               {" "}
-              {`${pagination} / ${
+              {`${!loading ? pagination : "loading..."} / ${
                 totalPageCounter ? totalPageCounter : "No content"
               }`}{" "}
             </span>

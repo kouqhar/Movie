@@ -38,7 +38,7 @@ const MovieDetails = () => {
 
   const goBack = () => navigate(-1);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="loading">Loading Movie Detail...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (

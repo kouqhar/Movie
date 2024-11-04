@@ -16,6 +16,7 @@ const MovieProvider = ({ children }) => {
   useEffect(() => {
     const fetchMovies = async (p) => {
       try {
+        setLoading(true);
         const response = await getMovies(p);
         setMovies(response.data?.results);
         setTotalPageCounter(response.data?.total_pages);
