@@ -23,6 +23,7 @@ const overview = [loremOne, loremTwo];
 const release_date = [Date.now(), new Date(2023 - 4 - 20)];
 const vote_average = [5.8, 8.4];
 const status = ["Released", "Un-Released"];
+const vote_count = [64459, 32472];
 const poster_path = [
   "/b33nnKl1GSFbao4l3fZDDqsMx0F.jpg",
   "/7fR3KxswtY8OHHZuOUB9td58CRX.jpg",
@@ -57,6 +58,7 @@ const AddMovieForm = ({ onClose }) => {
       status: status[randomNumber],
       genres: genres[randomNumber],
       poster_path: poster_path[randomNumber],
+      vote_count: vote_count[randomNumber],
     };
 
     setMovies((prev) => [newMovie, ...prev]);

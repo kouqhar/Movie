@@ -21,8 +21,6 @@ const MovieList = () => {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [page, setPage] = useState(1);
 
-  console.log("movies ", movies);
-
   useEffect(() => {
     setPagination(page);
   }, [setPagination, page]);

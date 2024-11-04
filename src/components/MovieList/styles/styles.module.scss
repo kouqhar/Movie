@@ -90,7 +90,7 @@
     @include heightWidth($height: auto);
     flex-direction: column;
     min-height: 20rem;
-    // width: 200px;
+    width: 100%;
     background: $primaryGrey;
     text-align: center;
     position: relative;
@@ -99,8 +99,8 @@
     border-radius: .5rem;
     transition: transform .3s ease-in-out;
 
-    @include responsive(medium-screens) {
-        width: 100%;
+    @include responsive(desktop-screens) {
+        width: 200px;
     }
 
     &__poster {

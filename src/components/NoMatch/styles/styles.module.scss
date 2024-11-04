@@ -1,0 +1,31 @@
+@import "../../../styles/partials/mixin";
+@import "../../../styles/partials/mediaQueries";
+@import "../../../styles/partials/colors";
+
+.container {
+    @include displayFlex();
+
+    &_content {
+        @include displayFlex();
+        flex-direction: column;
+        @include heightWidth(50%, 90%);
+        margin-inline: auto;
+        background-color: $primaryWhite;
+        border-radius: 1rem;
+
+        @include responsive(desktop-screens) {
+            @include heightWidth(70%, 70%);
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        button {
+            background-color: $primaryAsh;
+            border: 2px solid $primaryBlur;
+            padding: .5rem 1.5rem;
+            font-size: 1.1rem;
+        }
+    }
+}

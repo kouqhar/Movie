@@ -1,7 +1,11 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError, useNavigate } from "react-router-dom";
+
+// Styles
+import styles from "./styles/styles.module.css";
 
 function NoMatch() {
   const error = useRouteError();
+  const navigate = useNavigate();
 
   let [title, dataMessage] = [
     "404: Page Not Found",
@@ -14,11 +18,16 @@ function NoMatch() {
     dataMessage = message;
   }
 
+  const goToHome = () => navigate("/");
+
   return (
-    <div style={{ padding: 20 }}>
-      <h2>{title}</h2>
-      <p>{dataMessage}</p>
-      <p>{error.message}</p>
+    <div className={styles.container}>
+      <div className={styles.container_content}>
+        <h2>{title}</h2>
+        <p>{dataMessage}</p>
+        <p>{error.message}</p>
+        <button onClick={goToHome}>Go To Home Page</button>
+      </div>
     </div>
   );
 }

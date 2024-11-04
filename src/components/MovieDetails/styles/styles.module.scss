@@ -1,0 +1,78 @@
+@import "../../../styles/partials/mixin";
+@import "../../../styles/partials/mediaQueries";
+@import "../../../styles/partials/colors";
+
+.container {
+    &_goBack {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        background-color: $primaryTrans;
+        color: $primaryBlack;
+        border: 2px solid $primaryAsh;
+        font-weight: bold;
+        padding: .5rem 1.5rem;
+        border-radius: .5rem;
+        cursor: pointer;
+    }
+
+    &_content {
+        margin-block-start: 3.5rem;
+
+        @include responsive(desktop-screens) {
+            @include displayGrid($gc: repeat(2, 1fr));
+            gap: 3rem;
+            max-width: 80%;
+            margin-inline: auto;
+        }
+
+        &__info {
+            @include displayFlex($ai: flex-start);
+            flex-direction: column;
+            padding-inline: 1rem;
+
+            &___overview {
+                font-size: 1.1rem;
+            }
+
+            &___details {
+                width: 100%;
+                @include displayFlex($jc: space-between);
+
+                img {
+                    object-fit: cover;
+                }
+
+                p {
+                    color: $primaryOrange;
+
+                    &:nth-child(even) {
+                        color: $lighterSuccess;
+                    }
+                }
+
+            }
+
+            &___genres {
+                width: 100%;
+                @include displayFlex($jc: flex-start);
+                row-gap: 1.2rem;
+                flex-wrap: wrap;
+                margin-block: 1rem;
+
+                span {
+                    @include paddingMargin(.5rem 1rem, 0 .5rem 0 0);
+                    width: fit-content;
+                    color: $primaryWhite;
+                    border-radius: 1rem;
+                    border: 1px solid $primaryAsh;
+                    background-color: $lighterSuccess;
+
+                    &:nth-child(even) {
+                        background-color: $primaryBlur;
+                    }
+                }
+            }
+        }
+    }
+}

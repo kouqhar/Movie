@@ -91,6 +91,7 @@
   width: 100%;
   flex-direction: column;
   min-height: 20rem;
+  width: 100%;
   background: #eee;
   text-align: center;
   position: relative;
@@ -98,6 +99,11 @@
   cursor: pointer;
   border-radius: 0.5rem;
   transition: transform 0.3s ease-in-out;
+}
+@media (min-width: 1024px) {
+  .Card {
+    width: 200px;
+  }
 }
 .Card__poster {
   height: auto;
