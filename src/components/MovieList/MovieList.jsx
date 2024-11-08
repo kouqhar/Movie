@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { MovieContext } from "../../context/MovieContext";
 import SearchBar from "../SearchBar";
 import AddMovieForm from "../AddMovieForm";
@@ -20,11 +21,11 @@ const MovieList = () => {
   } = useContext(MovieContext);
   const [showAddMovie, setShowAddMovie] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [page, setPage] = useState(1);
+  let [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    setPagination(page);
-  }, [setPagination, page]);
+    setSearchParams({ page: pagination }, { replace: true });
+  }, [pagination, setSearchParams]);
 
   useEffect(() => {
     const filteredMovies = movies?.filter((movie) =>
@@ -39,15 +40,15 @@ const MovieList = () => {
   if (error) return <div>Error: {error}</div>;
 
   const previousPage = () => {
-    if (page - 1 < 1) return;
+    if (pagination - 1 < 1) return;
 
-    setPage((prevState) => (prevState -= 1));
+    setPagination((prevState) => (prevState -= 1));
   };
 
   const nextPage = () => {
-    if (page + 1 > movies?.total_pages) return;
+    if (pagination + 1 > movies?.total_pages) return;
 
-    setPage((prevState) => (prevState += 1));
+    setPagination((prevState) => (prevState += 1));
   };
 
   return (
@@ -76,7 +77,7 @@ const MovieList = () => {
           <AddMovieForm onClose={() => setShowAddMovie(false)} />
         )}
         {loading && <div className="loading">Loading Movie List...</div>}
-        {!loading && filteredMovies.length > 0 && (
+        {!loading && filteredMovies?.length > 0 && (
           <ul className={styles.container_movies}>
             {filteredMovies?.map(({ id, title, poster_path, vote_average }) => {
               const props = { title, id, poster_path, vote_average };

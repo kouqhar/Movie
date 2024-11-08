@@ -26,12 +26,11 @@
             @include displayFlex();
             flex-direction: column;
             width: 60%;
-            position: absolute;
-            left: 0;
-            top: 0;
+            position: relative;
 
             input {
                 width: 100%;
+                border-radius: .5rem;
             }
 
             &____suggest {
@@ -42,6 +41,10 @@
                 background-color: $primaryBlack;
                 color: $primaryWhite;
                 padding-inline: 1rem;
+                position: absolute;
+                top: 6vh;
+                left: 0;
+                height: auto;
 
                 p {
                     cursor: pointer;

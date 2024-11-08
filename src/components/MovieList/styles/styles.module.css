@@ -31,12 +31,11 @@
   -ms-align-items: center;
   flex-direction: column;
   width: 60%;
-  position: absolute;
-  left: 0;
-  top: 0;
+  position: relative;
 }
 .header_container__content___search input {
   width: 100%;
+  border-radius: 0.5rem;
 }
 .header_container__content___search____suggest {
   height: 100%;
@@ -47,6 +46,10 @@
   background-color: #242424;
   color: #ffffff;
   padding-inline: 1rem;
+  position: absolute;
+  top: 6vh;
+  left: 0;
+  height: auto;
 }
 .header_container__content___search____suggest p {
   cursor: pointer;

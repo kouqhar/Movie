@@ -10,7 +10,7 @@ const MovieProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [searchHistory, setSearchHistory] = useState([]);
   const [query, setQuery] = useState("");
-  const [pagination, setPagination] = useState();
+  const [pagination, setPagination] = useState(1);
   const [totalPageCounter, setTotalPageCounter] = useState();
 
   useEffect(() => {

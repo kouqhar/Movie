@@ -43,7 +43,11 @@ const MovieDetails = () => {
 
   return (
     <div className={styles.container} key={movie.id}>
-      <button className={styles.container_goBack} onClick={goBack}>
+      <button
+        className={styles.container_goBack}
+        type="button"
+        onClick={goBack}
+      >
         Go Back
       </button>
       <div className={styles.container_content}>
@@ -66,8 +70,9 @@ const MovieDetails = () => {
           <div className={styles.container_content__info___details}>
             <p>{movie.release_date}</p>
             <p>{movie.status}</p>
-            <p>{movie.vote_average}</p>
-            <p>{movie.vote_count} votes</p>
+            <p>
+              {movie.vote_average} / 10 ({movie.vote_count} votes)
+            </p>
           </div>
           {/* Genres */}
           <div className={styles.container_content__info___genres}>
